@@ -1,0 +1,61 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:jwtdemo
+    username: sa
+    password: password
+    driverClassName: org.h2.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+
+  h2:
+    console:
+      enabled: true
+
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    username: root
+#    url: jdbc:mysql://localhost:3306/jwtdemo
+#    password: root
+#  jpa:
+#    properties:
+#      hibernate:
+#        dialect: org.hibernate.dialect.MySQL8Dialect
+#    hibernate:
+#      ddl-auto: update
+#    show-sql: 'true'
+
+management:
+  server:
+    port: ${API_ACTUATOR_PORT:9000}
+    
+  endpoint:
+    health:
+      show-details: always
+  health:
+    defaults:
+      enabled: true
+    mongo:
+      enabled: true
+  
+  endpoints:
+    web:
+      exposure:
+        include:
+         - '*'
+#        - metrics
+#        - mapping   
+
+    jmx:
+      domain: com.ethan.springsecurity.jwtdemo
+      exposure:
+        include:
+        - '*'
+
+# application specific properties
+app:
+  jwt:
+    secret: '12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890'
+    expire:
+      duration: '3600000'

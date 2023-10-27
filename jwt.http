@@ -1,0 +1,32 @@
+### API that requires authorization
+GET localhost:8080/products/1
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxLGFkbWluQGdtYWlsLmNvbSIsInJvbGVzIjpbXSwiaXNzIjoiand0ZGVtbyIsImlhdCI6MTY5ODQzMzIxMywiZXhwIjoxNjk4NDM2ODEzfQ.47fkxaL_H6lITsmjDh6c025yZWUcPfCo9RhTD0jgtqV2h_oaJLd9_EQhMgxUe8kSXO2azuwcT6VIqXEW3hCBgQ
+
+### Login
+POST localhost:8080/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@gmail.com",
+  "password": "123456"
+}
+
+### Admin registration
+POST localhost:8080/users
+Content-Type: application/json
+
+{
+  "email": "admin@gmail.com",
+  "password": "123456",
+  "role": "ADMIN"
+}
+
+### Normal user registration
+POST localhost:8080/users
+Content-Type: application/json
+
+{
+  "email": "user@gmail.com",
+  "password": "123456",
+  "role": "USER"
+}
